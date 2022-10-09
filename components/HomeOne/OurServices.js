@@ -5,7 +5,7 @@ import ru from "../../locales/ru/common.json";
 import kk from "../../locales/kk/common.json";
 import en from "../../locales/en/common.json";
 import {useRouter} from "next/router";
-import {API} from 'utils/consts';
+import {API} from "../../utils/consts";
 
 export default function OurServices() {
   const { locale } = useRouter();
