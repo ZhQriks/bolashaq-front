@@ -14,7 +14,7 @@ export default function OurServices() {
   useEffect(async () => {
     try {
       const res = await fetch(
-        `${API}/publication/club?limit=3&page=0`
+        `${API}publication/club?limit=3&page=0`
       );
       const { result } = await res.json();
       setClubs(result);
@@ -32,6 +32,11 @@ export default function OurServices() {
         </div>
 
         <div className="row">
+          {clubs.length === 0 && (
+              <div>
+                <h2 style={{ textAlign: "center" }}>Уже скоро опубликуем клубы/кружки!</h2>
+              </div>
+          )}
           {clubs.map((club, index) => {
             return (
               <div className="col-lg-4 col-md-6" key={index}>
@@ -59,11 +64,7 @@ export default function OurServices() {
               </div>
             );
           })}
-          {clubs.length === 0 && (
-            <div>
-              <h2 style={{ textAlign: "center" }}>Клубы уже скоро!</h2>
-            </div>
-          )}
+
         </div>
       </div>
     </section>
