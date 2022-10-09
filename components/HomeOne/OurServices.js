@@ -1,10 +1,11 @@
-import React, { Component, useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import Link from "next/link";
 
 import ru from "../../locales/ru/common.json";
 import kk from "../../locales/kk/common.json";
 import en from "../../locales/en/common.json";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
+import {API} from 'utils/consts';
 
 export default function OurServices() {
   const { locale } = useRouter();
@@ -13,7 +14,7 @@ export default function OurServices() {
   useEffect(async () => {
     try {
       const res = await fetch(
-        `http://api.galam.life:3000/api/v1/publication/club?limit=3&page=0`
+        `${API}/publication/club?limit=3&page=0`
       );
       const { result } = await res.json();
       setClubs(result);
