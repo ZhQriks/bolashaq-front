@@ -17,8 +17,8 @@ export default function BlogDetailsContent() {
     return d.toLocaleDateString();
   };
 
-  useEffect(async () => {
-    if (newsId) {
+  const fetchData = async (id) => {
+    if (id) {
       try {
         //get page from query
         const res = await fetch(
@@ -33,6 +33,10 @@ export default function BlogDetailsContent() {
         router.push("/news?page=1");
       }
     }
+  };
+
+  useEffect(() => {
+    fetchData(newsId);
   }, [newsId]);
 
   return (

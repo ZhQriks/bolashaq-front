@@ -5,7 +5,8 @@ import { API, API_BOlASHAQ } from "../../../utils/consts";
 
 export default function AdministrationContent() {
   const [employees, setEmployees] = React.useState([]);
-  useEffect(async () => {
+
+  const fetchData = async () => {
     try {
       //get page from query
       const res = await fetch(`${API_BOlASHAQ}/api/employees?populate=*`);
@@ -13,6 +14,10 @@ export default function AdministrationContent() {
       const response = await res.json();
       setEmployees(response.data);
     } catch (err) {}
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
   return (
     <section className="services-section pt-100 pb-70">

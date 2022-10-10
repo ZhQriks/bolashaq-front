@@ -11,16 +11,17 @@ export default function OurServices() {
   const { locale } = useRouter();
   const t = locale === "ru" ? ru : locale === "kk" ? kk : en;
   const [clubs, setClubs] = useState([]);
-  useEffect(async () => {
+  const fetchData = async () => {
     try {
       const res = await fetch(
         `${API}publication/club?limit=3&page=0`
       );
       const { result } = await res.json();
       setClubs(result);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (

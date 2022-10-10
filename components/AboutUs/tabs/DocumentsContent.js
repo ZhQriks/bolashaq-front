@@ -4,13 +4,17 @@ import { API_BOlASHAQ } from "../../../utils/consts";
 export default function DocumentsContent() {
   const [projects, setProjects] = useState([]);
 
-  useEffect(async () => {
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
     try {
       const res = await fetch(`${API_BOlASHAQ}/api/documents?populate=*`);
       const { data } = await res.json();
       setProjects(data);
     } catch (err) {}
-  }, []);
+  };
 
   return (
     <section className="project-section pt-50 pb-70">

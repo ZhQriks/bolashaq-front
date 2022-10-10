@@ -20,7 +20,11 @@ export default function BlogCardTwo() {
   const t = locale === "ru" ? ru : locale === "kk" ? kk : en;
 
   const [news, setNews] = useState([]);
-  useEffect(async () => {
+  useEffect(() => {
+    fetchData();
+  }, [page]);
+
+  const fetchData = async () => {
     if (page === undefined) {
       page = 1;
     }
@@ -28,8 +32,7 @@ export default function BlogCardTwo() {
       await fetchNews();
       await handlePageClick();
     } catch (err) {}
-  }, [page]);
-
+  };
   const fetchNews = async () => {
     const res = await fetch(
       `${API_BOlASHAQ}/api/news-posts?populate=*&pagination[page]=${page}&pagination[pageSize]=4` +

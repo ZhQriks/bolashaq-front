@@ -11,13 +11,16 @@ export default function ProjectsContent() {
   const t = locale === "ru" ? ru : locale === "kk" ? kk : en;
 
   const [projects, setProjects] = useState([]);
-
-  useEffect(async () => {
+  const fetchData = async () => {
     try {
       const res = await fetch(`${API_BOlASHAQ}/api/projects?populate=*`);
       const { data } = await res.json();
       setProjects(data);
     } catch (err) {}
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (

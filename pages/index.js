@@ -8,38 +8,41 @@ import FeaturedService from "../components/HomeOne/FeaturedService";
 import Customers from "../components/Common/Customers";
 import Footer from "../components/Layouts/Footer";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import ru from "../locales/ru/common.json";
+import kk from "../locales/kk/common.json";
+import en from "../locales/en/common.json";
 
-class Index extends Component {
-  render() {
-    return (
-      <>
-        <Head>
-          <title>Bolashaq Sarayi</title>
-          <meta
-            name="description"
-            content="ГКП на ПХВ BOLASHAQ SARAIY при УО Акмолинской области"
-          />
-        </Head>
-        <Navbar />
+export default function Index() {
+  const { locale } = useRouter();
+  const t = locale === "ru" ? ru : locale === "kk" ? kk : en;
 
-        <MainBanner />
+  return (
+    <>
+      <Head>
+        <title>{t.title}</title>
+        <meta
+          name="description"
+          content="ГКП на ПХВ BOLASHAQ SARAIY при УО Акмолинской области"
+        />
+      </Head>
+      <Navbar />
 
-        <OurServices />
+      <MainBanner />
 
-        <AboutUs />
+      <OurServices />
 
-        <FunFacts />
+      <AboutUs />
 
-        <div className="pb-100 mt-5">
-          <FeaturedService />
-        </div>
+      <FunFacts />
 
-        <Customers />
+      <div className="pb-100 mt-5">
+        <FeaturedService />
+      </div>
 
-        <Footer />
-      </>
-    );
-  }
+      <Customers />
+
+      <Footer />
+    </>
+  );
 }
-
-export default Index;
