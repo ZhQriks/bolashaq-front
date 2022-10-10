@@ -72,20 +72,45 @@ export default function NavbarLight() {
                 </a>
               </Link>
 
-              <button
-                onClick={toggleNavbar}
-                className={classTwo}
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="icon-bar top-bar"></span>
-                <span className="icon-bar middle-bar"></span>
-                <span className="icon-bar bottom-bar"></span>
-              </button>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div className="dropdown-container">
+                  <a className="dropdown-title">{router.locale}</a>
+                  <i className="dropdown-toggle dropdown-title"></i>
+                  <div className="dropdown-menu-content">
+                    <ul aria-labelledby="dropdownMenuLink">
+                      <li>
+                        <a className="nav-link" onClick={russianLunguage}>
+                          RU
+                        </a>
+                      </li>
+                      <li>
+                        <a className="nav-link" onClick={englishLunguage}>
+                          EN
+                        </a>
+                      </li>
+                      <li>
+                        <a className="nav-link" onClick={kazakhLunguage}>
+                          KZ
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <button
+                  onClick={toggleNavbar}
+                  className={classTwo}
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span className="icon-bar top-bar"></span>
+                  <span className="icon-bar middle-bar"></span>
+                  <span className="icon-bar bottom-bar"></span>
+                </button>
+              </div>
 
               <div className={classOne} id="navbarSupportedContent">
                 <ul className="navbar-nav">

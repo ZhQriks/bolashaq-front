@@ -1,4 +1,7 @@
 @media only screen and (max-width: 767px) {
+  .page-title-area {
+    margin-top: 45px;
+  }
   .section-title {
     margin-bottom: 30px;
   }
@@ -740,7 +743,7 @@
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 991px)    {
   .mIRAS-bg{
     background-size: auto;
   }

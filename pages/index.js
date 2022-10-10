@@ -23,7 +23,9 @@ export default function Index() {
         <title>{t.title}</title>
         <meta
           name="description"
-          content="ГКП на ПХВ BOLASHAQ SARAIY при УО Акмолинской области"
+          content="ГКП на ПХВ BOLASHAQ SARAIY при УО Акмолинской области.
+           «Bolashaq saraiy» позволит учащимся и студентам развивать свои
+           способности и таланты в области искусства, спорта, научно-технического и IT направлений!"
         />
       </Head>
       <Navbar />
