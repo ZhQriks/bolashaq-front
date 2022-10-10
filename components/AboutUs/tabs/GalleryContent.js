@@ -22,8 +22,7 @@ export default function GalleryContent() {
 
   const [news, setNews] = useState([]);
 
-  useEffect(async () => {
-    //wait for page to load
+  const fetchData = async () => {
     if (page === undefined) {
       router.push(`/about-us/gallery?page=${1}`);
       page = 1;
@@ -42,6 +41,11 @@ export default function GalleryContent() {
         await handlePageClick();
       } catch (err) {}
     }
+  };
+
+  useEffect(() => {
+    //wait for page to load
+    fetchData();
   }, [page]);
 
   const handlePageClick = async (data) => {

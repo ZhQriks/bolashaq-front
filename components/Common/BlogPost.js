@@ -16,12 +16,16 @@ export default function FeaturedService() {
     return d.toLocaleDateString();
   };
 
-  useEffect(async () => {
+  const fetchData = async () => {
     try {
       const res = await fetch(`${API}publication/club?limit=6&page=0`);
       const { result } = await res.json();
       setClubs(result);
     } catch (err) {}
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
   return (
     <section className="services-section pt-100 pb-70">

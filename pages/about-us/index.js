@@ -21,8 +21,12 @@ export default function AboutUs({ children }) {
 
   useEffect(() => {
     //redirect to administration page
-    return router.push("/about-us/administration");
+    handleRedirect();
   }, []);
+
+  const handleRedirect = () => {
+    return router.push("/about-us/administration");
+  };
   const handleChange = (newActive) => {
     setActive(newActive);
   };

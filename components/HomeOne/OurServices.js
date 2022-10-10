@@ -10,16 +10,17 @@ export default function OurServices() {
   const { locale } = useRouter();
   const t = locale === "ru" ? ru : locale === "kk" ? kk : en;
   const [clubs, setClubs] = useState([]);
-  useEffect(async () => {
+  const fetchData = async () => {
     try {
       const res = await fetch(
         `http://api.galam.life:3000/api/v1/publication/club?limit=3&page=0`
       );
       const { result } = await res.json();
       setClubs(result);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (
