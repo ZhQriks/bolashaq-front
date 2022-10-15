@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import ru from "../../locales/ru/projects.json";
 import kk from "../../locales/kk/projects.json";
 import en from "../../locales/en/projects.json";
-import { API_BOlASHAQ } from "../../utils/consts";
 
 export default function ProjectsContent() {
   const { locale } = useRouter();
@@ -13,7 +12,7 @@ export default function ProjectsContent() {
   const [projects, setProjects] = useState([]);
   const fetchData = async () => {
     try {
-      const res = await fetch(`${API_BOlASHAQ}/api/projects?populate=*`);
+      const res = await fetch(`/api/projects?populate=*`);
       const { data } = await res.json();
       setProjects(data);
     } catch (err) {}
@@ -38,7 +37,7 @@ export default function ProjectsContent() {
                 <div className="single-project">
                   <div className="project-image">
                     <img
-                      src={`${API_BOlASHAQ}${project.attributes.picture.data[0].attributes.url}`}
+                      src={`/image/${project.attributes.picture.data[0].attributes.url}`}
                       alt={project.attributes.title}
                       style={{ height: "300px" }}
                     />

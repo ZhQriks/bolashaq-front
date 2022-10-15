@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import ru from "../../locales/ru/common.json";
 import kk from "../../locales/kk/common.json";
 import en from "../../locales/en/common.json";
-import {useRouter} from "next/router";
-import {API} from "../../utils/consts";
+import { useRouter } from "next/router";
 
 export default function OurServices() {
   const { locale } = useRouter();
@@ -13,9 +12,7 @@ export default function OurServices() {
   const [clubs, setClubs] = useState([]);
   const fetchData = async () => {
     try {
-      const res = await fetch(
-        `${API}publication/club?limit=3&page=0`
-      );
+      const res = await fetch(`/galam/publication/club?limit=3&page=0`);
       const { result } = await res.json();
       setClubs(result);
     } catch (err) {}
@@ -34,9 +31,11 @@ export default function OurServices() {
 
         <div className="row">
           {clubs.length === 0 && (
-              <div>
-                <h2 style={{ textAlign: "center" }}>Уже скоро опубликуем клубы/кружки!</h2>
-              </div>
+            <div>
+              <h2 style={{ textAlign: "center" }}>
+                Уже скоро опубликуем клубы/кружки!
+              </h2>
+            </div>
           )}
           {clubs.map((club, index) => {
             return (
@@ -65,7 +64,6 @@ export default function OurServices() {
               </div>
             );
           })}
-
         </div>
       </div>
     </section>

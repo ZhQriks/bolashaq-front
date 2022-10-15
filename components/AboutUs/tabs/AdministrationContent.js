@@ -1,7 +1,4 @@
 import React, { useEffect } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { API, API_BOlASHAQ } from "../../../utils/consts";
 
 export default function AdministrationContent() {
   const [employees, setEmployees] = React.useState([]);
@@ -9,7 +6,7 @@ export default function AdministrationContent() {
   const fetchData = async () => {
     try {
       //get page from query
-      const res = await fetch(`${API_BOlASHAQ}/api/employees?populate=*`);
+      const res = await fetch(`/api/employees?populate=*`);
 
       const response = await res.json();
       setEmployees(response.data);
@@ -30,7 +27,7 @@ export default function AdministrationContent() {
                   <a>
                     <img
                       className="employee-image"
-                      src={`${API_BOlASHAQ}${employee.attributes.photo.data.attributes.url}`}
+                      src={`/image/${employee.attributes.photo.data.attributes.url}`}
                       alt={"image"}
                     />
                   </a>

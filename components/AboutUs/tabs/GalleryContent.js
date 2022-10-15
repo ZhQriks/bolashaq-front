@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import ReactPaginate from "react-paginate";
 import Modal from "react-modal";
-import { API_BOlASHAQ } from "../../../utils/consts";
 
 export default function GalleryContent() {
   const [modalPicture, setModalPicture] = useState("");
@@ -30,7 +29,7 @@ export default function GalleryContent() {
       try {
         //get page from query
         const res = await fetch(
-          `${API_BOlASHAQ}/api/galleries?populate=*&pagination[page]=${page}&pagination[pageSize]=6`
+          `/api/galleries?populate=*&pagination[page]=${page}&pagination[pageSize]=6`
         );
 
         const response = await res.json();
@@ -66,13 +65,13 @@ export default function GalleryContent() {
                       style={{ cursor: "pointer" }}
                       onClick={() =>
                         openModal(
-                          `${API_BOlASHAQ}${news.attributes.picture.data.attributes.url}`
+                          `/image/${news.attributes.picture.data.attributes.url}`
                         )
                       }
                     >
                       <a>
                         <img
-                          src={`${API_BOlASHAQ}${news.attributes.picture.data.attributes.url}`}
+                          src={`/image/${news.attributes.picture.data.attributes.url}`}
                           alt="image"
                           style={{ height: "340px", width: "100%" }}
                         />

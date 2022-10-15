@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import ru from "../../locales/ru/common.json";
 import kk from "../../locales/kk/common.json";
 import en from "../../locales/en/common.json";
-import { API } from "../../utils/consts";
 
 export default function FeaturedService() {
   const { locale } = useRouter();
@@ -18,7 +17,7 @@ export default function FeaturedService() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch(`${API}publication/club?limit=6&page=0`);
+      const res = await fetch(`/galam/publication/club?limit=6&page=0`);
       const { result } = await res.json();
       setClubs(result);
     } catch (err) {}

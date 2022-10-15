@@ -1,11 +1,9 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import BlogSideBar from "./BlogSideBar";
 import { useRouter } from "next/router";
 import ru from "../../locales/ru/news.json";
 import kk from "../../locales/kk/news.json";
 import en from "../../locales/en/news.json";
-import { API_BOlASHAQ } from "../../utils/consts";
 import ReactPaginate from "react-paginate";
 
 export default function BlogCardTwo() {
@@ -35,7 +33,7 @@ export default function BlogCardTwo() {
   };
   const fetchNews = async () => {
     const res = await fetch(
-      `${API_BOlASHAQ}/api/news-posts?populate=*&pagination[page]=${page}&pagination[pageSize]=4` +
+      `/api/news-posts?populate=*&pagination[page]=${page}&pagination[pageSize]=4` +
         (searchQuery ? `&_q=${searchQuery}` : "")
     );
     if (searchQuery) {
@@ -59,14 +57,14 @@ export default function BlogCardTwo() {
     e.preventDefault();
     if (search === "") {
       const res = await fetch(`
-    ${API_BOlASHAQ}/api/news-posts?populate=*&pagination[page]=1&pagination[pageSize]=4`);
+    /api/news-posts?populate=*&pagination[page]=1&pagination[pageSize]=4`);
       const response = await res.json();
       setNews(response.data);
       setPageCount(response.meta.pagination.pageCount);
       return router.push(`/news?page=${page}`);
     }
     const res = await fetch(`
-    ${API_BOlASHAQ}/api/news-posts?populate=*&pagination[pageSize]=4&_q=${search}`);
+    /api/news-posts?populate=*&pagination[pageSize]=4&_q=${search}`);
     const response = await res.json();
     router.push(`/news?page=1&search=${search}`, undefined, {
       shallow: true,
@@ -94,7 +92,7 @@ export default function BlogCardTwo() {
                       <Link href={`/news/${news.id}`}>
                         <a>
                           <img
-                            src={`${API_BOlASHAQ}${news.attributes.picture.data[0].attributes.url}`}
+                            src={`/image/${news.attributes.picture.data[0].attributes.url}`}
                             alt="image"
                             style={{ height: "340px", width: "100%" }}
                           />

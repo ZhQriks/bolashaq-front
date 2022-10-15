@@ -2,7 +2,6 @@ import React, { Component, useEffect, useState } from "react";
 import Link from "next/link";
 import BlogSideBar from "./BlogSideBar";
 import { useRouter } from "next/router";
-import { API_BOlASHAQ } from "../../utils/consts";
 import Head from "next/head";
 
 export default function BlogDetailsContent() {
@@ -21,9 +20,7 @@ export default function BlogDetailsContent() {
     if (id) {
       try {
         //get page from query
-        const res = await fetch(
-          `${API_BOlASHAQ}/api/news-posts/${newsId || 1}?populate=*`
-        );
+        const res = await fetch(`/api/news-posts/${newsId || 1}?populate=*`);
 
         const response = await res.json();
         setPicture(response.data.attributes.picture.data[0].attributes.url);
@@ -42,7 +39,7 @@ export default function BlogDetailsContent() {
   return (
     <>
       <Head>
-        <title>News details</title>
+        <title>{post.title ? post.title : "News details"}</title>
         <meta property="og:title" content={`${post.title}`} />
         <meta property="og:description" content={`${post.details}`} />
       </Head>
@@ -53,7 +50,7 @@ export default function BlogDetailsContent() {
               <div className="blog-details-desc">
                 <div className="article-image">
                   <img
-                    src={`${API_BOlASHAQ}${picture}`}
+                    src={`/image/${picture}`}
                     alt="image"
                     className="col-lg-8"
                   />

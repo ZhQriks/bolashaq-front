@@ -27,6 +27,11 @@ export default function Index() {
            «Bolashaq saraiy» позволит учащимся и студентам развивать свои
            способности и таланты в области искусства, спорта, научно-технического и IT направлений!"
         />
+        <meta
+          name="keywords"
+          content="Болашак,Кружки,Программирование,Спортивные секций, Кружки кокшетау, Кокшетау"
+        />
+        <meta name="og:title" content="BOLASHAQ SARAIY" />
       </Head>
       <Navbar />
 

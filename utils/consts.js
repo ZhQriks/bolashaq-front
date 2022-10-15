@@ -1,8 +1,8 @@
 //export const
 import React from "react";
 
-export const API = "http://api.galam.life:8080/api/v2/";
-export const API_BOlASHAQ = "http://178.18.250.138:1337";
+// export const API = "http://api.galam.life:8080/api/v2/";
+// export const API_BOlASHAQ = "http://178.18.250.138:1337";
 // export const API_BOlASHAQ = "http://localhost:1337";
 
 export const getAboutUsPage = (id) => {

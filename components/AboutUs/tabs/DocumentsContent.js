@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { API_BOlASHAQ } from "../../../utils/consts";
 
 export default function DocumentsContent() {
   const [projects, setProjects] = useState([]);
@@ -10,7 +9,7 @@ export default function DocumentsContent() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch(`${API_BOlASHAQ}/api/documents?populate=*`);
+      const res = await fetch(`/api/documents?populate=*`);
       const { data } = await res.json();
       setProjects(data);
     } catch (err) {}
@@ -26,7 +25,7 @@ export default function DocumentsContent() {
               <a
                 key={index}
                 target="_blank"
-                href={`${API_BOlASHAQ}${project.attributes.file.data.attributes.url}`}
+                href={`/image/${project.attributes.file.data.attributes.url}`}
               >
                 <div className="col-lg-12 col-md-12">
                   <div className="single-file">
