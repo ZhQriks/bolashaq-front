@@ -83,23 +83,21 @@ export default function BlogCardTwo() {
     <section className="blog-section ptb-100">
       <div className="container">
         <div className="row">
-          <div className="col-lg-8">
-            <div className="row">
-              {news.map((news, index) => {
-                return (
-                  <div className="col-lg-6 col-md-6" key={index}>
+            {news.map((news, index) => {
+              return (
+                  <div className="col-lg-4 col-md-4" key={index}>
                     <div className="blog-item">
                       <Link href={`/news/${news.id}`}>
                         <a>
                           <img
-                            src={`/image/${news.attributes.picture.data[0].attributes.url}`}
-                            alt="image"
-                            style={{ height: "340px", width: "100%" }}
+                              src={`/image/${news.attributes.picture.data[0].attributes.url}`}
+                              alt="image"
+                              style={{ height: "340px", width: "100%" }}
                           />
                         </a>
                       </Link>
 
-                      <div className="blog-content">
+                      <div className="blog-content overflow-hidden">
                         <ul className="meta-tags">
                           <li>
                             <Link href="/news/index">
@@ -128,9 +126,8 @@ export default function BlogCardTwo() {
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+              );
+            })}
             {pageCount > 1 && news && (
               <ReactPaginate
                 previousLabel={"<"}
@@ -149,34 +146,6 @@ export default function BlogCardTwo() {
                 breakClassName={"page-numbers"}
               />
             )}
-          </div>
-
-          <div className="col-lg-4">
-            <aside className="widget-area">
-              <div className="widget widget_search">
-                <form
-                  className="search-form search-top"
-                  onSubmit={handleSearch}
-                >
-                  <label>
-                    <span className="screen-reader-text">Search for:</span>
-                    <input
-                      type="search"
-                      className="search-field"
-                      placeholder={t.search}
-                      value={search}
-                      // onChange={(e) => setSearch(e.target.value)}
-                      onChange={(e) => handleSearchChange(e)}
-                    />
-                  </label>
-
-                  <button type="submit">
-                    <i className="fas fa-search"></i>
-                  </button>
-                </form>
-              </div>
-            </aside>
-          </div>
         </div>
       </div>
     </section>

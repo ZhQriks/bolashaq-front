@@ -43,7 +43,7 @@ export default function BlogDetailsContent() {
         <meta property="og:title" content={`${post.title}`} />
         <meta property="og:description" content={`${post.details}`} />
       </Head>
-      <section className="blog-details-area ptb-100">
+      <section className="ptb-100">
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
